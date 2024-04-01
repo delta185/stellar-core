@@ -32,7 +32,8 @@ class LedgerCloseMetaFrame
 
     void populateEvictedEntries(LedgerEntryChanges const& evictionChanges);
 
-    void setNetworkConfiguration(SorobanNetworkConfig const& networkConfig);
+    void setNetworkConfiguration(SorobanNetworkConfig const& networkConfig,
+                                 bool emitExtraFeeMeta);
 
     LedgerCloseMeta const& getXDR() const;
 
