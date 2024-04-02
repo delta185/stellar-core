@@ -275,6 +275,8 @@ Config::Config() : NODE_SEED(SecretKey::random())
     TESTING_STARTING_EVICTION_SCAN_LEVEL =
         InitialSorobanNetworkConfig::STARTING_EVICTION_SCAN_LEVEL;
 
+    EMIT_EXTRA_SOROBAN_FEE_META = false;
+
 #ifdef BUILD_TESTS
     TEST_CASES_ENABLED = false;
 #endif
@@ -1519,6 +1521,10 @@ Config::processConfig(std::shared_ptr<cpptoml::table> t)
                 }
                 MAX_DEX_TX_OPERATIONS_IN_TX_SET =
                     value == 0 ? std::nullopt : std::make_optional(value);
+            }
+            else if (item.first == "EMIT_EXTRA_SOROBAN_FEE_META")
+            {
+                EMIT_EXTRA_SOROBAN_FEE_META = readBool(item);
             }
             else
             {
